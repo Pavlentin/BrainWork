@@ -4,19 +4,25 @@ i: int = 60
 m: int = s // i
 h: int = m // i
 d: int = h // 24
-y: int = d // 365
+mh: int = d // 30
+y: int = mh // 12
 if m >= 1:
     s = s % i
 if h >= 1:
     m = m % i
 if d >= 1:
     h = h % 24
+if mh >= 1:
+    d = d % 31
 if y >= 1:
-    d = d % 365
-my_list = [y, d, h, m, s]
+    mh = mh % 12
+my_list = [y, d, mh, h, m, s]
 time_y = "years"
 if y <= 1:
     time_y = "year"
+time_mh = "months"
+if mh <= 1:
+    time_mh = "month"
 time_d = "days"
 if d <= 1:
     time_d = "day"
@@ -29,4 +35,5 @@ if m <= 1:
 time_s = "seconds"
 if s <= 1:
     time_s = "second"
-print(my_list[0], time_y, my_list[1], time_d, my_list[2], time_h, my_list[3], time_m, my_list[4], time_s)
+print(my_list[0], time_y, my_list[1], time_mh, my_list[2], time_d, my_list[3], time_h, my_list[4], time_m, my_list[5], time_s)
+
